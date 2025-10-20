@@ -89,26 +89,8 @@ namespace ConsolaNHibernate
                 Activo = activo
             };
 
-            // NHibernate bidez gorde eta gero guztiak inprimatu
-            using (var session = NHibernateHelper.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
-                // 1️⃣ Gorde erabiltzaile berria
-                session.Save(nuevoUsuario);
-                transaction.Commit();
-            }
-
-            // 2️⃣ Guztiak inprimatu
-            using (var session = NHibernateHelper.OpenSession())
-            {
-                var usuarios = session.Query<Usuario>().ToList();
-
-                Console.WriteLine("\n=== Datu-baseko erabiltzaile guztiak ===");
-                foreach (var u in usuarios)
-                {
-                    Console.WriteLine($"{u.Idx}: {u.Nombre} ({u.UsuarioNombre}) - Email: {u.Email} - Activo: {u.Activo}");
-                }
-            }
+            erabiltzaileakController ec = new erabiltzaileakController();
+            ec.ErabiltzaileaSortu(nuevoUsuario);
 
             Console.WriteLine("\nSakatu tekla bat amaitzeko...");
             Console.ReadKey();
