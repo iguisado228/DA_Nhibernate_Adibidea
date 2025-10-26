@@ -21,30 +21,10 @@ namespace ConsolaNHibernate
 
     internal class erabiltzaileakController
     {
-        var nuevoUsuario = new Usuario
-        {
-            UsuarioNombre = Usuario,
-            Nombre = nombre,
-            Sexo = sexo,
-            Nivel = nivel,
-            Email = email,
-            Telefono = telefono,
-            Marca = marca,
-            Compania = compania,
-            Saldo = saldo,
-            Activo = activo
-        };
-
-        using  (var session = NHibernateHelper.OpenSession())
-        using (var transaction = Session.BeginTransaction())
-        {
-        session.Save(nuevoUsuario);
-        transaction.Commit();
-        }
 
 
 
-public void ErabiltzaileaSortu(erabiltzaileakController.erabiltzaileBerria)
+public void ErabiltzaileaSortu(Usuario erabiltzaileBerria)
 {
     using (var session = NHibernateHelper.OpenSession())
     using (var transaction = session.BeginTransaction())
@@ -54,7 +34,7 @@ public void ErabiltzaileaSortu(erabiltzaileakController.erabiltzaileBerria)
     }
 }
 
-public void ErabiltzaileaEguneratu(Erabiltzailea eguneratutakoErabiltzailea)
+public void ErabiltzaileaEguneratu(Usuario eguneratutakoErabiltzailea)
 {
     using (var session = NHibernateHelper.OpenSession())
     using (var transaction = session.BeginTransaction())
